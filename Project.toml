@@ -1,0 +1,7 @@
+name = "WebDriver"
+uuid = "a1701d2e-96bf-11e9-34d6-594ef6180be8"
+authors = ["Iain Skett <iain.skett@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+PyCall = "438e738f-606a-5dbb-bf0a-cddfbfd45ab0"

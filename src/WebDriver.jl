@@ -19,6 +19,15 @@ function init_chrome(;headless = true)
     Driver(wd.Chrome(options=options))
 end
 
+function with_chrome(fn; headless = true)
+    d = init_chrome(headless = headless)
+    try
+        fn(d)
+    finally
+        quit(d)
+    end
+end
+
 struct ActionChain
     o::PyObject
 end

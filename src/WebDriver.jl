@@ -48,5 +48,6 @@ findone(element::WebElement, xpath) = WebElement(element.o.find_element_by_xpath
 findall(element::WebElement, xpath) = map(WebElement, element.o.find_elements_by_xpath(xpath))
 attribute(element::WebElement, name) = element.o.get_attribute(name)
 text(element::WebElement) = element.o.text
+Base.getindex(element::WebElement, name) = attribute(element, name)
 
 end # module

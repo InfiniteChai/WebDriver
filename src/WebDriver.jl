@@ -12,10 +12,15 @@ struct WebElement
 end
 PyObject(x::WebElement) = x.o
 
+logging = pyimport("logging")
+rc = pyimport("selenium.webdriver.remote.remote_connection")
+rc.LOGGER.setLevel(logging.ERROR)
+
 function init_chrome(;headless = true)
     wd = pyimport("selenium.webdriver")
     options = wd.ChromeOptions()
     options.headless = headless
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])
     Driver(wd.Chrome(options=options))
 end
 

@@ -42,5 +42,11 @@ PyObject(x::ActionChain) = x.o
 get(driver::Driver, url) = driver.o.get(url)
 quit(driver::Driver) = driver.o.quit()
 refresh(driver::Driver) = driver.o.refresh()
+findone(driver::Driver, xpath) = WebElement(driver.o.find_element_by_xpath(xpath))
+findall(driver::Driver, xpath) = map(WebElement, driver.o.find_elements_by_xpath(xpath))
+findone(element::WebElement, xpath) = WebElement(element.o.find_element_by_xpath(xpath))
+findall(element::WebElement, xpath) = map(WebElement, element.o.find_elements_by_xpath(xpath))
+attribute(element::WebElement, name) = element.o.get_attribute(name)
+text(element::WebElement) = element.o.text
 
 end # module

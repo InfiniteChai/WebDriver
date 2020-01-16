@@ -2,6 +2,8 @@ module WebDriver
 
 using PyCall
 
+export init_chrome, with_chrome
+
 struct Driver
     o::PyObject
 end
@@ -49,6 +51,7 @@ quit(driver::Driver) = driver.o.quit()
 refresh(driver::Driver) = driver.o.refresh()
 findone(driver::Driver, xpath) = WebElement(driver.o.find_element_by_xpath(xpath))
 findall(driver::Driver, xpath) = map(WebElement, driver.o.find_elements_by_xpath(xpath))
+execute_script(driver::Driver, script::String, args...) = driver.o.execute_script(script, args...)
 findone(element::WebElement, xpath) = WebElement(element.o.find_element_by_xpath(xpath))
 findall(element::WebElement, xpath) = map(WebElement, element.o.find_elements_by_xpath(xpath))
 attribute(element::WebElement, name) = element.o.get_attribute(name)

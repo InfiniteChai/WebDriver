@@ -15,11 +15,11 @@ end
 PyObject(x::WebElement) = x.o
 
 logging = pyimport("logging")
-rc = pyimport("selenium.webdriver.remote.remote_connection")
+rc = pyimport_conda("selenium.webdriver.remote.remote_connection", "selenium")
 rc.LOGGER.setLevel(logging.ERROR)
 
 function init_chrome(;headless = true)
-    wd = pyimport("selenium.webdriver")
+    wd = pyimport_conda("selenium.webdriver", "selenium")
     options = wd.ChromeOptions()
     options.headless = headless
     options.add_experimental_option("excludeSwitches", ["enable-logging"])
@@ -40,7 +40,7 @@ struct ActionChain
 end
 
 function ActionChain(x::Driver)
-    wd = pyimport("selenium.webdriver")
+    wd = pyimport_conda("selenium.webdriver", "selenium")
     ActionChain(wd.ActionChains(x.o))
 end
 

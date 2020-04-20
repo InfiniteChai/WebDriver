@@ -14,7 +14,7 @@ struct WebElement
 end
 PyObject(x::WebElement) = x.o
 
-logging = pyimport("logging")
+logging = pyimport_conda("logging", "logging")
 rc = pyimport_conda("selenium.webdriver.remote.remote_connection", "selenium")
 rc.LOGGER.setLevel(logging.ERROR)
 
